@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  backend-service2
+  labels:
+    app:  backend-service2
+spec:
+  selector:
+    matchLabels:
+      app: backend-service2
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: backend-service2
+    spec:
+      containers:
+      - name:  backend-service2
+        image:  nmtri1912/backend-service2:latest
+        # resources:
+        #   requests:
+        #     cpu: 100Mi
+        #     memory: 100Mi
+        #   limits:
+        #     cpu: 100Mi
+        #     memory: 100Mi
+        ports:
+        - containerPort:  8080
+          name:  port-8080
+      restartPolicy: Always
